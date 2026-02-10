@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -22,8 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <aside className="w-56 border-r border-neutral-200 flex flex-col shrink-0">
             <div className="px-6 py-6">
               <Link href="/" className="block">
-                <span className="text-xl font-semibold tracking-tight">bold</span>
-                <span className="block text-[11px] text-neutral-400 font-normal tracking-wide uppercase mt-0.5">UK Fulfillment</span>
+                <Image src="/bold-logo.png" alt="Bold" width={80} height={31} priority />
+                <span className="block text-[11px] text-neutral-400 font-normal tracking-wide uppercase mt-1.5">UK Fulfillment</span>
               </Link>
             </div>
             <nav className="flex-1 px-3 space-y-0.5">
