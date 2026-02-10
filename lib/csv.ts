@@ -93,7 +93,7 @@ export function generateFinanceSummary(orders: NetXLOrder[]) {
     totalUnits,
     totalCredited: Math.round(totalCredited * 100) / 100,
     totalHandlingFees: Math.round(totalHandlingFees * 100) / 100,
-    netAmount: Math.round((totalCredited - totalHandlingFees) * 100) / 100,
+    netAmount: Math.round((totalCredited + totalHandlingFees) * 100) / 100,
     skuBreakdown,
   };
 }
