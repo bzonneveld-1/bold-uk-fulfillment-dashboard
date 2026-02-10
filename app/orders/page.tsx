@@ -28,9 +28,17 @@ export default async function OrdersPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-xl font-semibold tracking-tight">Orders & Tracking</h1>
-        <p className="text-[13px] text-neutral-400 mt-1">UK order fulfillment via NetXL</p>
+      <div className="flex items-start justify-between mb-8">
+        <div>
+          <h1 className="text-xl font-semibold tracking-tight">Orders & Tracking</h1>
+          <p className="text-[13px] text-neutral-400 mt-1">UK order fulfillment via NetXL</p>
+        </div>
+        <a
+          href="/api/export-orders"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 text-[12px] font-medium text-neutral-600 hover:text-neutral-900 hover:border-neutral-300 transition-colors"
+        >
+          Export CSV
+        </a>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
