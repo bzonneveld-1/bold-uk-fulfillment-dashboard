@@ -13,13 +13,13 @@ export default async function AccountPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Credit & Account</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Trade account: {customer.first_name} {customer.last_name} &middot; {customer.email_address}
+        <h1 className="text-xl font-semibold tracking-tight">Credit & Account</h1>
+        <p className="text-[13px] text-neutral-400 mt-1">
+          {customer.first_name} {customer.last_name} &middot; {customer.email_address}
         </p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
         <KpiCard title="Credit Limit" value={`£${credit.credit_limit.toFixed(2)}`} />
         <KpiCard title="Outstanding" value={`£${credit.total_outstanding.toFixed(2)}`} />
         <KpiCard title="Available Credit" value={`£${credit.available_credit.toFixed(2)}`} color="green" />
@@ -27,46 +27,44 @@ export default async function AccountPage() {
       </div>
 
       {credit.outstanding_orders.length > 0 && (
-        <div className="bg-white rounded-xl border shadow-sm mb-8">
-          <div className="p-5 border-b">
-            <h2 className="font-semibold">Outstanding Orders</h2>
+        <div className="bg-white rounded-xl border border-neutral-200/80 mb-6">
+          <div className="px-5 py-4 border-b border-neutral-100">
+            <h2 className="text-[14px] font-semibold text-neutral-900">Outstanding Orders</h2>
           </div>
           <div className="p-5">
-            <pre className="text-sm text-gray-600">{JSON.stringify(credit.outstanding_orders, null, 2)}</pre>
+            <pre className="text-[12px] text-neutral-500 font-mono">{JSON.stringify(credit.outstanding_orders, null, 2)}</pre>
           </div>
         </div>
       )}
 
-      <div className="bg-white rounded-xl border shadow-sm">
-        <div className="p-5 border-b">
-          <h2 className="font-semibold">Delivery Addresses ({addresses.length})</h2>
+      <div className="bg-white rounded-xl border border-neutral-200/80">
+        <div className="px-5 py-4 border-b border-neutral-100">
+          <h2 className="text-[14px] font-semibold text-neutral-900">Delivery Addresses ({addresses.length})</h2>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-[13px]">
             <thead>
-              <tr className="border-b bg-gray-50">
-                <th className="text-left p-3 font-medium">ID</th>
-                <th className="text-left p-3 font-medium">Contact</th>
-                <th className="text-left p-3 font-medium">Company</th>
-                <th className="text-left p-3 font-medium">Address</th>
-                <th className="text-left p-3 font-medium">City</th>
-                <th className="text-left p-3 font-medium">Postcode</th>
-                <th className="text-left p-3 font-medium">Phone</th>
+              <tr className="border-b border-neutral-100">
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">Contact</th>
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">Company</th>
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">Address</th>
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">City</th>
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">Postcode</th>
+                <th className="text-left px-5 py-3 font-medium text-neutral-400 text-[11px] uppercase tracking-wider">Phone</th>
               </tr>
             </thead>
             <tbody>
               {addresses.map((addr) => (
-                <tr key={addr.id} className="border-b hover:bg-gray-50">
-                  <td className="p-3 text-xs text-gray-400">{addr.id}</td>
-                  <td className="p-3">{addr.contact_name}</td>
-                  <td className="p-3 text-xs">{addr.company_name || '-'}</td>
-                  <td className="p-3 text-xs">
+                <tr key={addr.id} className="border-b border-neutral-50 hover:bg-neutral-50/50 transition-colors">
+                  <td className="px-5 py-3 text-neutral-700">{addr.contact_name}</td>
+                  <td className="px-5 py-3 text-[12px] text-neutral-500">{addr.company_name || '-'}</td>
+                  <td className="px-5 py-3 text-[12px] text-neutral-500">
                     {addr.street_one}
                     {addr.street_two && `, ${addr.street_two}`}
                   </td>
-                  <td className="p-3">{addr.city}</td>
-                  <td className="p-3 font-mono text-xs">{addr.zip}</td>
-                  <td className="p-3 text-xs">{addr.contact_number}</td>
+                  <td className="px-5 py-3 text-neutral-700">{addr.city}</td>
+                  <td className="px-5 py-3 font-mono text-[12px] text-neutral-500">{addr.zip}</td>
+                  <td className="px-5 py-3 text-[12px] text-neutral-500">{addr.contact_number}</td>
                 </tr>
               ))}
             </tbody>

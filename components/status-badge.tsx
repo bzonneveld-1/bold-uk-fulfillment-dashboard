@@ -3,10 +3,10 @@ interface StatusBadgeProps {
 }
 
 const styles = {
-  ok: 'bg-green-100 text-green-800',
-  soon: 'bg-orange-100 text-orange-800',
-  urgent: 'bg-red-100 text-red-800',
-  out_of_stock: 'bg-gray-100 text-gray-800',
+  ok: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  soon: 'bg-amber-50 text-amber-700 border-amber-200',
+  urgent: 'bg-red-50 text-red-600 border-red-200',
+  out_of_stock: 'bg-neutral-50 text-neutral-500 border-neutral-200',
 };
 
 const labels = {
@@ -18,7 +18,7 @@ const labels = {
 
 export default function StatusBadge({ status }: StatusBadgeProps) {
   return (
-    <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${styles[status]}`}>
+    <span className={`inline-block px-2 py-0.5 rounded border text-[11px] font-medium ${styles[status]}`}>
       {labels[status]}
     </span>
   );

@@ -7,26 +7,34 @@ interface SalesVelocityChartProps {
   skus: string[];
 }
 
-const COLORS = ['#3b82f6', '#ef4444', '#22c55e', '#f97316', '#8b5cf6'];
+const COLORS = ['#171717', '#737373', '#a3a3a3', '#d4d4d4', '#404040'];
 
 export default function SalesVelocityChart({ data, skus }: SalesVelocityChartProps) {
-  if (data.length === 0) return <p className="text-gray-400 text-sm">No sales data</p>;
+  if (data.length === 0) return <p className="text-neutral-400 text-[13px]">No sales data</p>;
 
   return (
-    <ResponsiveContainer width="100%" height={350}>
+    <ResponsiveContainer width="100%" height={320}>
       <LineChart data={data}>
-        <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
+        <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#a3a3a3' }} axisLine={false} tickLine={false} />
+        <YAxis tick={{ fontSize: 11, fill: '#a3a3a3' }} axisLine={false} tickLine={false} />
+        <Tooltip
+          contentStyle={{
+            background: '#fff',
+            border: '1px solid #e5e5e5',
+            borderRadius: '8px',
+            fontSize: '12px',
+            boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.05)',
+          }}
+        />
+        <Legend wrapperStyle={{ fontSize: '11px', color: '#737373' }} />
         {skus.map((sku, i) => (
           <Line
             key={sku}
             type="monotone"
             dataKey={sku}
             stroke={COLORS[i % COLORS.length]}
-            strokeWidth={2}
-            dot={{ r: 3 }}
+            strokeWidth={1.5}
+            dot={{ r: 2, fill: COLORS[i % COLORS.length] }}
             connectNulls
           />
         ))}
